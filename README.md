@@ -18,16 +18,16 @@ The dataset (`loan_approval_dataset.csv`) contains 4,269 loan applications with 
 | `income_annum` | Annual income (INR) |
 | `loan_amount` | Requested loan amount (INR) |
 | `loan_term` | Loan repayment term (years) |
-| `cibil_score` | Credit score (300–900) |
+| `cibil_score` | Credit score (300-900) |
 | `residential_assets_value` | Value of residential assets |
 | `commercial_assets_value` | Value of commercial assets |
 | `luxury_assets_value` | Value of luxury assets |
 | `bank_asset_value` | Value of bank assets |
-| `loan_status` | Target variable — Approved / Rejected |
+| `loan_status` | Target variable - Approved / Rejected |
 
 ## Project Structure
 
-\`\`\`
+```
 loan-approval-predictor/
 ├── loan_approval_dataset.csv       # Dataset
 ├── loan_approval_predictor.ipynb   # Main notebook (Colab-ready)
@@ -37,7 +37,7 @@ loan-approval-predictor/
 ├── confusion_matrix.png            # Model evaluation chart
 ├── feature_importance.png          # Feature importance chart
 └── README.md
-\`\`\`
+```
 
 ## Tech Stack
 
@@ -50,13 +50,13 @@ loan-approval-predictor/
 
 ## How It Works
 
-1. **Data Cleaning** — strips whitespace, drops non-predictive `loan_id` column.
-2. **Encoding** — categorical fields (`education`, `self_employed`, `loan_status`) encoded using `LabelEncoder`.
-3. **Train-Test Split** — 80/20 stratified split.
-4. **Scaling** — numeric features standardized using `StandardScaler`.
-5. **Model Training** — Logistic Regression, Decision Tree, and Random Forest are trained and compared.
-6. **Evaluation** — best model selected based on accuracy and AUC; confusion matrix and feature importance plotted.
-7. **Prediction** — trained model, scaler, and encoders saved as `.pkl` files for reuse.
+1. **Data Cleaning** - strips whitespace, drops non-predictive `loan_id` column.
+2. **Encoding** - categorical fields (`education`, `self_employed`, `loan_status`) encoded using `LabelEncoder`.
+3. **Train-Test Split** - 80/20 stratified split.
+4. **Scaling** - numeric features standardized using `StandardScaler`.
+5. **Model Training** - Logistic Regression, Decision Tree, and Random Forest are trained and compared.
+6. **Evaluation** - best model selected based on accuracy and AUC; confusion matrix and feature importance plotted.
+7. **Prediction** - trained model, scaler, and encoders saved as `.pkl` files for reuse.
 
 ## Model Performance
 
@@ -74,34 +74,34 @@ loan-approval-predictor/
 
 ### Run on Google Colab
 
-1. Open [Google Colab](https://colab.research.google.com).
+1. Open Google Colab: https://colab.research.google.com
 2. Upload `loan_approval_predictor.ipynb` or copy the code from the notebook.
 3. Run the upload cell and select `loan_approval_dataset.csv` when prompted.
-4. Run all cells sequentially (`Runtime → Run all`).
+4. Run all cells sequentially (Runtime → Run all).
 
 ### Run Locally
 
-\`\`\`bash
+```bash
 git clone https://github.com/<your-username>/loan-approval-predictor.git
 cd loan-approval-predictor
 pip install -r requirements.txt
 jupyter notebook loan_approval_predictor.ipynb
-\`\`\`
+```
 
 ### requirements.txt
 
-\`\`\`
+```
 pandas
 numpy
 scikit-learn
 matplotlib
 seaborn
 joblib
-\`\`\`
+```
 
 ## Making Predictions
 
-\`\`\`python
+```python
 import joblib
 import pandas as pd
 
@@ -128,7 +128,7 @@ prediction = model.predict(scaled)
 result = encoders['loan_status'].inverse_transform(prediction)[0]
 
 print("Loan Status:", "Selected" if result == "Approved" else "Rejected")
-\`\`\`
+```
 
 ## Future Improvements
 
@@ -138,4 +138,4 @@ print("Loan Status:", "Selected" if result == "Approved" else "Rejected")
 - Add SHAP/LIME explainability for individual predictions
 - Handle class imbalance with SMOTE if dataset is skewed
 
-## Intern_ID: CITS5093
+### Intern_ID: CITS5093
